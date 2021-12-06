@@ -1,6 +1,5 @@
 ## Golang Flash Sale
 
-## Fitur:  
 Aplikasi ini dibuat untuk membantu mencari produk flash sale di website e-commerce indonesia
 
 > Saat ini hanya support website [Shopee Indonesia](https://shopee.co.id)
