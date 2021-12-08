@@ -1,7 +1,6 @@
 package shopee
 
 import (
-	"fmt"
 	"go-flash-sale/helper"
 	"log"
 	"net/http"
