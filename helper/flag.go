@@ -1,10 +1,14 @@
-package model
+package helper
 
 import (
 	"flag"
-	"go-flash-sale/helper"
+	"fmt"
 	"os"
+	"strconv"
+	"strings"
 )
+
+type CategoriesFlag []int
 
 type AppFlag struct {
 	Limit                  int
@@ -61,9 +65,37 @@ func (f *AppFlag) Init() {
 	helpSlice := &[]string{"h", "help", "-h", "--h", "-help", "--help"}
 	// show usage when user type help, --h, or --help
 	for _, i := range os.Args {
-		if helper.ContainsString(helpSlice, i) {
+		if ContainsString(helpSlice, i) {
 			flag.Usage()
 			os.Exit(1)
 		}
 	}
+}
+
+func (c *CategoriesFlag) String() string {
+	return fmt.Sprint(*c)
+}
+
+func (c *CategoriesFlag) Set(value string) error {
+	for _, v := range strings.Split(value, ",") {
+		if v == "" {
+			continue
+		}
+		if i, err := strconv.Atoi(v); err == nil {
+			*c = append(*c, i)
+		} else {
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (c *CategoriesFlag) Contains(x int) bool {
+	for _, v := range *c {
+		if v == x {
+			return true
+		}
+	}
+	return false
 }

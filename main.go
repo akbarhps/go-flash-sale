@@ -2,13 +2,13 @@ package main
 
 import (
 	"fmt"
-	"go-flash-sale/model"
+	"go-flash-sale/helper"
 	"go-flash-sale/shopee"
 	"log"
 )
 
 func main() {
-	appFlag := model.AppFlag{}
+	appFlag := helper.AppFlag{}
 	appFlag.Init()
 
 	shopeeObj := shopee.Shopee{}
